@@ -1,0 +1,14 @@
+services:
+  wiremock:
+    image: wiremock/wiremock:latest
+    container_name: epg-service-mock
+    ports:
+      - "9090:9090"
+    command:
+      - --port
+      - "9090"
+      - -verbose
+      - -global-response-templating
+    volumes:
+      - ./wiremock/mappings:/home/wiremock/mappings
+      - ./wiremock/__files:/home/wiremock/__files
